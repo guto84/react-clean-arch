@@ -1,10 +1,12 @@
-import React from 'react'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 
-import { getAllPostsController } from 'controllers/posts/get-all-posts-controller'
+import { getAllPostsController } from 'controllers/posts'
+
+import { routerAdapter } from 'shared/adapters'
 
 export const ListPosts: React.FC = () => {
-  const { posts, getAllPosts } = getAllPostsController()
+  const { Link } = routerAdapter()
+  const { allPosts, getAllPosts } = getAllPostsController()
 
   useEffect(() => {
     getAllPosts()
@@ -13,12 +15,24 @@ export const ListPosts: React.FC = () => {
   return (
     <>
       <h1>Posts</h1>
-      {posts.postListLoading && <p>Carregando...</p>}
-      <ul>
-        {posts.postList.map((post) => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Ver</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allPosts.postList.map((post) => (
+            <tr key={post.id}>
+              <td>{post.title}</td>
+              <td>
+                <Link to={`/${post.id}`}>Ver</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   )
 }

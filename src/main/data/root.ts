@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import postsReducer from 'data/posts/get-all-posts/get-all-posts-slice'
+import getAllPostReducer from 'data/posts/get-all/get-all-slice'
+import getByIdPostReducer from 'data/posts/get-by-id/get-by-id-slice'
 
 export const store = configureStore({
   reducer: {
-    posts: postsReducer
+    getAllposts: getAllPostReducer,
+    getByIdposts: getByIdPostReducer
   }
 })
 

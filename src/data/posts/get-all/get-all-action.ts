@@ -4,7 +4,7 @@ import { GetAllPostsModel } from 'domain/models'
 
 import { HttpClient, HttpClientAdapter } from 'shared/adapters'
 
-import { GetAllPostsUsecase } from './get-all-posts-usecase'
+import { GetAllPostsUsecase } from './get-all-usecase'
 
 const httpClientAdapter: HttpClient = new HttpClientAdapter()
 const getAllPosts: GetAllPostsModel = new GetAllPostsUsecase(httpClientAdapter)

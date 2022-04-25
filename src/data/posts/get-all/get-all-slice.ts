@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { GetAllPostsStore } from 'domain/store'
 import { GetAllPostsModel } from 'domain/models'
 
-import { getAllPostsAction } from './get-all-posts-action'
+import { getAllPostsAction } from './get-all-action'
 
 const initialState: GetAllPostsStore = {
   postList: [],
@@ -12,8 +12,8 @@ const initialState: GetAllPostsStore = {
   postListErrorMessage: ''
 }
 
-export const postSlice = createSlice({
-  name: 'posts',
+export const getAllPostSlice = createSlice({
+  name: 'getAllposts',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -35,4 +35,4 @@ export const postSlice = createSlice({
   }
 })
 
-export default postSlice.reducer
+export default getAllPostSlice.reducer

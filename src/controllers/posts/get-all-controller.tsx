@@ -7,14 +7,16 @@ import { useAppSelector, useAppDispatch } from 'data/hooks'
 
 export const getAllPostsController = () => {
   const dispatch = useAppDispatch()
-  const posts: GetAllPostsStore = useAppSelector((state) => state.posts)
+  const allPosts: GetAllPostsStore = useAppSelector(
+    (state) => state.getAllposts
+  )
 
   const getAllPosts = useCallback(() => {
     return dispatch(getAllPostsAction())
   }, [dispatch])
 
   return {
-    posts,
+    allPosts,
     getAllPosts
   }
 }

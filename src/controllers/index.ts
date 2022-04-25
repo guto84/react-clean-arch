@@ -1,1 +1,1 @@
-export * from './posts/get-all-posts-controller'
+export * from './posts/get-all-controller'

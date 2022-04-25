@@ -1,1 +1,2 @@
-export * from './get-all-posts-model'
+export * from './get-all-model'
+export * from './get-by-id-model'

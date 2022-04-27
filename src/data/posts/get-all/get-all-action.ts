@@ -1,19 +1,16 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-
-import { GetAllPostsModel } from 'domain/models'
-
+import { GetAllPostModel } from 'domain/index'
+import { HttpGetAllPosts } from 'usecases'
 import { HttpClient, HttpClientAdapter } from 'shared/adapters'
 
-import { GetAllPostsUsecase } from './get-all-usecase'
-
 const httpClientAdapter: HttpClient = new HttpClientAdapter()
-const getAllPosts: GetAllPostsModel = new GetAllPostsUsecase(httpClientAdapter)
+const getAllPosts: GetAllPostModel = new HttpGetAllPosts(httpClientAdapter)
 
-const handleListPosts = async (): Promise<GetAllPostsModel.Result[]> => {
+const handleListPosts = async (): Promise<GetAllPostModel.Result[]> => {
   return await getAllPosts.handle()
 }
 
 export const getAllPostsAction = createAsyncThunk(
   'posts/getAllPosts',
-  async (): Promise<GetAllPostsModel.Result[]> => await handleListPosts()
+  async (): Promise<GetAllPostModel.Result[]> => await handleListPosts()
 )

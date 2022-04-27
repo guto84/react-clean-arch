@@ -1,9 +1,9 @@
 import type { PostEntity } from 'domain/entities'
 
-export interface GetAllPostsModel {
-  handle: () => Promise<GetAllPostsModel.Result[]>
+export interface GetAllPostModel {
+  handle: () => Promise<GetAllPostModel.Result[]>
 }
 
-export namespace GetAllPostsModel {
+export namespace GetAllPostModel {
   export type Result = PostEntity
 }

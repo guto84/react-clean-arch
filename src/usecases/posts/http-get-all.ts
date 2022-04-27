@@ -1,11 +1,10 @@
-import { GetAllPostsModel } from 'domain/models'
-
+import { GetAllPostModel } from 'domain/index'
 import { HttpClientAdapter } from 'shared/adapters'
 
-export class GetAllPostsUsecase implements GetAllPostsModel {
+export class HttpGetAllPosts implements GetAllPostModel {
   constructor(private readonly httpClient: HttpClientAdapter) {}
 
-  async handle(): Promise<GetAllPostsModel.Result[]> {
+  async handle(): Promise<GetAllPostModel.Result[]> {
     const response = await this.httpClient.request({
       url: 'https://jsonplaceholder.typicode.com/posts',
       method: 'get'

@@ -1,14 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-import { GetByIdPostsStore } from 'domain/store'
-import { GetByIdPostsModel } from 'domain/models'
-
+import { GetByIdPostModel, GetByIdPostStore } from 'domain/index'
 import { getByIdPostsAction } from './get-by-id-action'
 
-const initialState: GetByIdPostsStore = {
+const initialState: GetByIdPostStore = {
   post: {
-    id: 0,
-    userId: 0,
+    id: null,
+    userId: null,
     title: '',
     body: ''
   },
@@ -28,7 +25,7 @@ export const getByIdPostSlice = createSlice({
       })
       .addCase(
         getByIdPostsAction.fulfilled,
-        (state, action: PayloadAction<GetByIdPostsModel.Result>) => {
+        (state, action: PayloadAction<GetByIdPostModel.Result>) => {
           state.post = action.payload
           state.postLoading = false
         }

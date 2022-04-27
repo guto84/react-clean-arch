@@ -1,6 +1,6 @@
 export interface PostEntity {
-  id: number
-  userId: number
+  id: number | null
+  userId: number | null
   title: string
   body: string
 }

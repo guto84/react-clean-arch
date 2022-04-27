@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { ListPosts } from 'pages/list-posts'
-import { ShowPost } from 'pages/show-post'
+import { ListPosts, ShowPost, CreatePosts } from 'pages'
 
 const RoutesRoot = () => {
   return (
@@ -9,6 +8,7 @@ const RoutesRoot = () => {
       <Routes>
         <Route path="/" element={<ListPosts />} />
         <Route path="/:id" element={<ShowPost />} />
+        <Route path="/create" element={<CreatePosts />} />
       </Routes>
     </BrowserRouter>
   )

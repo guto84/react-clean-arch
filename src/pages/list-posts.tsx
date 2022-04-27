@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 
-import { getAllPostsController } from 'controllers/posts'
+import { GetAllPostsData } from 'data/posts'
+import { GetAllPostController } from 'controllers/posts'
 
 import { routerAdapter } from 'shared/adapters'
 
 export const ListPosts: React.FC = () => {
   const { Link } = routerAdapter()
-  const { allPosts, getAllPosts } = getAllPostsController()
+  const store = new GetAllPostsData()
+  const { allPosts, getAllPosts } = new GetAllPostController(store)
 
   useEffect(() => {
     getAllPosts()
@@ -15,6 +17,7 @@ export const ListPosts: React.FC = () => {
   return (
     <>
       <h1>Posts</h1>
+      <Link to="create">Cadastrar</Link>
       <table>
         <thead>
           <tr>

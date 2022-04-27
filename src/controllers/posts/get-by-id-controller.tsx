@@ -1,22 +1,12 @@
 import { useCallback } from 'react'
+import { GetByIdPostDataProtocol } from 'usecases'
 
-import { GetByIdPostsStore } from 'domain/store'
+export class GetByIdPostController {
+  constructor(private readonly store: GetByIdPostDataProtocol) {}
 
-import { getByIdPostsAction } from 'data/posts'
-import { useAppSelector, useAppDispatch } from 'data/hooks'
+  showPost = this.store.showPost
 
-export const getByIdPostsController = (id: number) => {
-  const dispatch = useAppDispatch()
-  const showPost: GetByIdPostsStore = useAppSelector(
-    (state) => state.getByIdposts
-  )
-
-  const getByIdPosts = useCallback(() => {
-    return dispatch(getByIdPostsAction(id))
-  }, [dispatch, id])
-
-  return {
-    showPost,
-    getByIdPosts
-  }
+  getByIdPosts = useCallback((id: number) => {
+    this.store.getByIdPosts(id)
+  }, [])
 }

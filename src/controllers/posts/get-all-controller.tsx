@@ -1,22 +1,13 @@
 import { useCallback } from 'react'
+import { GetAllPostStore } from 'domain/index'
+import { GetAllPostDataProtocol } from 'usecases'
 
-import { GetAllPostsStore } from 'domain/store'
+export class GetAllPostController {
+  constructor(private readonly store: GetAllPostDataProtocol) {}
 
-import { getAllPostsAction } from 'data/posts'
-import { useAppSelector, useAppDispatch } from 'data/hooks'
+  allPosts: GetAllPostStore = this.store.allPosts
 
-export const getAllPostsController = () => {
-  const dispatch = useAppDispatch()
-  const allPosts: GetAllPostsStore = useAppSelector(
-    (state) => state.getAllposts
-  )
-
-  const getAllPosts = useCallback(() => {
-    return dispatch(getAllPostsAction())
-  }, [dispatch])
-
-  return {
-    allPosts,
-    getAllPosts
-  }
+  getAllPosts = useCallback(() => {
+    return this.store.getAllPosts()
+  }, [])
 }

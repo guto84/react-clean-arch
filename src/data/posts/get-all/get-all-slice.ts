@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-import { GetAllPostsStore } from 'domain/store'
-import { GetAllPostsModel } from 'domain/models'
-
+import { GetAllPostModel, GetAllPostStore } from 'domain/index'
 import { getAllPostsAction } from './get-all-action'
 
-const initialState: GetAllPostsStore = {
+const initialState: GetAllPostStore = {
   postList: [],
   postListLoading: false,
   postListError: false,
@@ -23,7 +20,7 @@ export const getAllPostSlice = createSlice({
       })
       .addCase(
         getAllPostsAction.fulfilled,
-        (state, action: PayloadAction<GetAllPostsModel.Result[]>) => {
+        (state, action: PayloadAction<GetAllPostModel.Result[]>) => {
           state.postList = action.payload
           state.postListLoading = false
         }

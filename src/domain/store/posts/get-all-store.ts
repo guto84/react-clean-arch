@@ -1,10 +1,10 @@
 import type { PostEntity } from 'domain/entities'
 
-interface GetAllPostsStore {
+interface GetAllPostStore {
   postList: PostEntity[]
   postListLoading: boolean
   postListError: boolean
   postListErrorMessage: string
 }
 
-export type { GetAllPostsStore }
+export type { GetAllPostStore }

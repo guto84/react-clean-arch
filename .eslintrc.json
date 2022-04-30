@@ -30,7 +30,6 @@
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/explict-module-boundary-types": "off",
     "prettier/prettier": "error",
-    "@typescript-eslint/no-namespace": "off",
     "@typescript-eslint/no-explicit-any": "off"
   },
   "settings": {

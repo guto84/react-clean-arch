@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { routerAdapter } from 'application/shared/adapters'
-import { GetAllPostFactory } from 'application/factories'
+import { GetAllPosts } from 'application/factories'
 
-export const ListPosts: React.FC = () => {
+type Props = {
+  getAllPosts: GetAllPosts
+}
+
+export const ListPosts = ({ getAllPosts }: Props) => {
   const { Link } = routerAdapter()
 
-  const { allPostsSelector, handleGetAllPosts } = GetAllPostFactory()
+  const { allPostsSelector, handleGetAllPosts } = getAllPosts()
 
   useEffect(() => {
     handleGetAllPosts()

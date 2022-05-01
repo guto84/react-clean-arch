@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react'
 import { routerAdapter } from 'application/shared/adapters'
-import { GetByIdPostFactory } from 'application/factories'
+import { GetByIdPost } from 'application/factories'
 
-export const ShowPost: React.FC = () => {
+type Props = {
+  getByIdPost: GetByIdPost
+}
+
+export const ShowPost = ({ getByIdPost }: Props) => {
   const { Link, params } = routerAdapter()
 
-  const { getByIdPostSelector, handleGetByIdPost } = GetByIdPostFactory(
+  const { getByIdPostSelector, handleGetByIdPost } = getByIdPost(
     Number(params.id)
   )
 

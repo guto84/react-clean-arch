@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react'
 import { useFormik } from 'formik'
 import { PostEntity } from 'domain/entities'
-import { CreatePostFactory, GetAllUserFactory } from 'application/factories'
+import { CreatePost, GetAllUsers } from 'application/factories'
 
-export const CreatePosts: React.FC = () => {
-  const { createPost, createPostSelector, setErrorMessage } =
-    CreatePostFactory()
-  const { allUsersSelector, handleGetAllUsers } = GetAllUserFactory()
+type Props = {
+  getAllUsers: GetAllUsers
+  createPosts: CreatePost
+}
+
+export const CreatePosts = ({ getAllUsers, createPosts }: Props) => {
+  const { createPost, createPostSelector, setErrorMessage } = createPosts()
+  const { allUsersSelector, handleGetAllUsers } = getAllUsers()
 
   useEffect(() => {
     handleGetAllUsers()

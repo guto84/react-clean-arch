@@ -13,3 +13,6 @@ export const LoginFactory = () => {
 
   return new LoginController(httpLogin)
 }
+
+type Login = typeof LoginFactory
+export type { Login }

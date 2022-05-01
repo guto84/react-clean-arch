@@ -4,7 +4,7 @@ import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 import { useAppDispatch, useAppSelector } from 'infra/hooks'
 import { GetAllPostController } from 'application/controllers'
 
-export const GetAllPostFactory = () => {
+export const GetAllPostsFactory = () => {
   const httpRequest: HttpRequest = {
     url: 'https://jsonplaceholder.typicode.com/posts',
     method: 'get'
@@ -15,3 +15,6 @@ export const GetAllPostFactory = () => {
   const store = new GetAllPostsData(getAllPosts, useAppDispatch, useAppSelector)
   return GetAllPostController(store)
 }
+
+type GetAllPosts = typeof GetAllPostsFactory
+export type { GetAllPosts }

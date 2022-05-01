@@ -15,6 +15,3 @@ export const GetAllPostController = (store: GetAllPostsData) => {
     handleGetAllPosts
   }
 }
-
-type GetAllPost = typeof GetAllPostController
-export type { GetAllPost }

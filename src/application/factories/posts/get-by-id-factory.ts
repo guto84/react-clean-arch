@@ -15,3 +15,6 @@ export const GetByIdPostFactory = (id: number) => {
   const store = new GetByIdPostData(getAllPosts, useAppDispatch, useAppSelector)
   return GetByIdPostController(store)
 }
+
+type GetByIdPost = typeof GetByIdPostFactory
+export type { GetByIdPost }

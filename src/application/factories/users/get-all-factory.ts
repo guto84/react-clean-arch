@@ -4,7 +4,7 @@ import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 import { useAppDispatch, useAppSelector } from 'infra/hooks'
 import { GetAllUserController } from 'application/controllers'
 
-export const GetAllUserFactory = () => {
+export const GetAllUsersFactory = () => {
   const httpRequest: HttpRequest = {
     url: 'https://jsonplaceholder.typicode.com/users',
     method: 'get'
@@ -15,3 +15,6 @@ export const GetAllUserFactory = () => {
   const store = new GetAllUsersData(getAllUsers, useAppDispatch, useAppSelector)
   return GetAllUserController(store)
 }
+
+type GetAllUsers = typeof GetAllUsersFactory
+export type { GetAllUsers }

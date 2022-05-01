@@ -1,9 +1,13 @@
 import React from 'react'
 import { useFormik } from 'formik'
-import { LoginFactory } from 'application/factories'
+import { Login } from 'application/factories'
 
-export const Login: React.FC = () => {
-  const { handleLogin } = LoginFactory()
+type Props = {
+  login: Login
+}
+
+export const LoginPage = ({ login }: Props) => {
+  const { handleLogin } = login()
   const formik = useFormik({
     initialValues: {
       email: '',

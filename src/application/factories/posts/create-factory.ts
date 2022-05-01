@@ -19,3 +19,6 @@ export const CreatePostFactory = () => {
 
   return new CreatePostController(store, createPost)
 }
+
+type CreatePost = typeof CreatePostFactory
+export type { CreatePost }

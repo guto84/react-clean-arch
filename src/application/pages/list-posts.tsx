@@ -1,19 +1,19 @@
 import { useEffect } from 'react'
 import { routerAdapter } from 'application/shared/adapters'
-import { GetAllPosts } from 'application/factories'
+import { FindAllPosts } from 'application/factories'
 
 type Props = {
-  getAllPosts: GetAllPosts
+  findAllPosts: FindAllPosts
 }
 
-export const ListPosts = ({ getAllPosts }: Props) => {
+export const ListPostsPage = ({ findAllPosts }: Props) => {
   const { Link } = routerAdapter()
 
-  const { allPostsSelector, handleGetAllPosts } = getAllPosts()
+  const { allPostsSelector, handleFindAllPosts } = findAllPosts()
 
   useEffect(() => {
-    handleGetAllPosts()
-  }, [handleGetAllPosts])
+    handleFindAllPosts()
+  }, [handleFindAllPosts])
 
   return (
     <>

@@ -1,3 +1,3 @@
 export * from './create-store'
-export * from './get-all-store'
-export * from './get-by-id-store'
+export * from './find-all-store'
+export * from './find-by-id-store'

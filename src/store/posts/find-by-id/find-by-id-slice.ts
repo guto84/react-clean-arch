@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PostEntity } from 'domain/entities'
-import { GetByIdPostStore } from 'domain/store'
+import { FindByIdPostStore } from 'domain/store'
 
-const initialState: GetByIdPostStore = {
+const initialState: FindByIdPostStore = {
   post: {
     id: null,
     userId: null,
@@ -13,8 +13,8 @@ const initialState: GetByIdPostStore = {
   postErrorMessage: ''
 }
 
-export const getByIdPostSlice = createSlice({
-  name: 'getByIdPosts',
+export const findByIdPostSlice = createSlice({
+  name: 'findByIdPost',
   initialState,
   reducers: {
     setPost: (state, action: PayloadAction<PostEntity>) => {
@@ -30,6 +30,6 @@ export const getByIdPostSlice = createSlice({
 })
 
 export const { setPost, setPostLoading, setPostErrorMessage } =
-  getByIdPostSlice.actions
+  findByIdPostSlice.actions
 
-export default getByIdPostSlice.reducer
+export default findByIdPostSlice.reducer

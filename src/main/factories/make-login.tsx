@@ -1,6 +1,6 @@
 import { LoginPage } from 'application/pages'
-import { LoginFactory } from 'application/factories'
+import { MakeLogin as Login } from 'application/factories'
 
-export const MakeLogin = () => {
-  return <LoginPage login={LoginFactory} />
+export const MakeLoginPage = () => {
+  return <LoginPage login={Login} />
 }

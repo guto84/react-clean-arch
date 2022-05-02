@@ -1,7 +1,7 @@
 import type { UserEntity } from 'domain/entities'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 
-export class HttpGetAllUsers {
+export class HttpFindAllUsers {
   constructor(
     private readonly httpClient: HttpClientAdapter,
     private readonly httpRequest: HttpRequest

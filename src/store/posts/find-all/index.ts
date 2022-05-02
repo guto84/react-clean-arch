@@ -1,21 +1,21 @@
-import { HttpGetAllPosts } from 'domain/usecases'
+import { HttpFindAllPosts } from 'domain/http'
 import type { UseAppDispatch, UseAppSelector } from 'infra/hooks'
 import {
   setPostList,
   setPostListLoading,
   setPostListErrorMessage
-} from './get-all-slice'
+} from './find-all-slice'
 
-export class GetAllPostsData {
+export class FindAllPostsData {
   constructor(
-    private readonly getAllPosts: HttpGetAllPosts,
+    private readonly findAllPosts: HttpFindAllPosts,
     private readonly useAppDispatch: UseAppDispatch,
     private readonly useAppSelector: UseAppSelector
   ) {}
 
   dispatch = this.useAppDispatch()
 
-  allPostsSelector = this.useAppSelector((state) => state.getAllPosts)
+  allPostsSelector = this.useAppSelector((state) => state.findAllPosts)
 
   handleListErrorMessage = (message: string) =>
     this.dispatch(setPostListErrorMessage(message))
@@ -23,9 +23,9 @@ export class GetAllPostsData {
   handlePostListLoading = (status: boolean) =>
     this.dispatch(setPostListLoading(status))
 
-  handleGetAllPosts = async () => {
+  handleFindAllPosts = async () => {
     try {
-      const response = await this.getAllPosts.handle()
+      const response = await this.findAllPosts.handle()
       this.dispatch(setPostList(response))
       this.dispatch(setPostListLoading(false))
     } catch (error) {

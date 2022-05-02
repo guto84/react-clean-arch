@@ -1,4 +1,4 @@
-import { Body, HttpLogin } from 'domain/usecases'
+import { Body, HttpLogin } from 'domain/http'
 
 export class LoginController {
   constructor(private readonly httpLogin: HttpLogin) {}

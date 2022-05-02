@@ -1,7 +1,7 @@
 import type { PostEntity } from 'domain/entities'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 
-export class HttpGetByIdPost {
+export class HttpFindByIdPost {
   constructor(
     private readonly httpClient: HttpClientAdapter,
     private readonly httpRequest: HttpRequest

@@ -1,2 +1,2 @@
-export * from './get-all-store'
+export * from './find-all-store'
 export * from './login-store'

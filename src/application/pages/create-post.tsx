@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react'
 import { useFormik } from 'formik'
 import { PostEntity } from 'domain/entities'
-import { CreatePost, GetAllUsers } from 'application/factories'
+import { CreatePost, FindAllUsers } from 'application/factories'
 
 type Props = {
-  getAllUsers: GetAllUsers
+  findAllUsers: FindAllUsers
   createPosts: CreatePost
 }
 
-export const CreatePosts = ({ getAllUsers, createPosts }: Props) => {
+export const CreatePostPage = ({ findAllUsers, createPosts }: Props) => {
   const { createPost, createPostSelector, setErrorMessage } = createPosts()
-  const { allUsersSelector, handleGetAllUsers } = getAllUsers()
+  const { allUsersSelector, handleFindAllUsers } = findAllUsers()
 
   useEffect(() => {
-    handleGetAllUsers()
-  }, [handleGetAllUsers])
+    handleFindAllUsers()
+  }, [handleFindAllUsers])
 
   const formik = useFormik({
     initialValues: {

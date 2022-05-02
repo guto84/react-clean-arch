@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PostEntity } from 'domain/entities'
-import { GetAllPostStore } from 'domain/store'
+import { FindAllPostsStore } from 'domain/store'
 
-const initialState: GetAllPostStore = {
+const initialState: FindAllPostsStore = {
   postList: [],
   postListLoading: true,
   postListErrorMessage: ''
 }
 
-export const getAllPostSlice = createSlice({
-  name: 'getAllposts',
+export const findAllPostsSlice = createSlice({
+  name: 'findAllPosts',
   initialState,
   reducers: {
     setPostList: (state, action: PayloadAction<PostEntity[]>) => {
@@ -25,6 +25,6 @@ export const getAllPostSlice = createSlice({
 })
 
 export const { setPostList, setPostListLoading, setPostListErrorMessage } =
-  getAllPostSlice.actions
+  findAllPostsSlice.actions
 
-export default getAllPostSlice.reducer
+export default findAllPostsSlice.reducer

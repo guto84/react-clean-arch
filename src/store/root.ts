@@ -1,18 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import getAllPostReducer from 'store/posts/get-all/get-all-slice'
-import getByIdPostReducer from 'store/posts/get-by-id/get-by-id-slice'
+import findAllPostsReducer from 'store/posts/find-all/find-all-slice'
+import findByIdPostReducer from 'store/posts/find-by-id/find-by-id-slice'
 import createPostReducer from 'store/posts/create/create-slice'
 
-import getAllUserReducer from 'store/users/get-all/get-all-slice'
+import findAllUserReducer from 'store/users/find-all/find-all-slice'
 
 export const store = configureStore({
   reducer: {
-    getAllPosts: getAllPostReducer,
-    getByIdPosts: getByIdPostReducer,
+    findAllPosts: findAllPostsReducer,
+    findByIdPost: findByIdPostReducer,
     createPosts: createPostReducer,
 
-    getAllUsers: getAllUserReducer
+    findAllUsers: findAllUserReducer
   }
 })
 

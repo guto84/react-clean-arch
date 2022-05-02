@@ -1,2 +1,2 @@
-export * from './get-all-controller'
+export * from './find-all-controller'
 export * from './login-controller'

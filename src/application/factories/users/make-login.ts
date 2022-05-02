@@ -1,8 +1,8 @@
+import { HttpLogin } from 'domain/http'
 import { LoginController } from 'application/controllers'
-import { HttpLogin } from 'domain/usecases'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 
-export const LoginFactory = () => {
+export const MakeLogin = () => {
   const httpRequest: HttpRequest = {
     url: 'http://localhost:5000/v1/users/login',
     method: 'post'
@@ -14,5 +14,5 @@ export const LoginFactory = () => {
   return new LoginController(httpLogin)
 }
 
-type Login = typeof LoginFactory
+type Login = typeof MakeLogin
 export type { Login }

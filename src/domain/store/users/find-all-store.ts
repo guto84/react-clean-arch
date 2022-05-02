@@ -1,9 +1,9 @@
 import type { UserEntity } from 'domain/entities'
 
-interface GetAllUsersStore {
+interface FindAllUsersStore {
   userList: UserEntity[]
   userListLoading: boolean
   userListErrorMessage: string
 }
 
-export type { GetAllUsersStore }
+export type { FindAllUsersStore }

@@ -1,7 +1,7 @@
 import type { PostEntity } from 'domain/entities'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 
-export class HttpGetAllPosts {
+export class HttpFindAllPosts {
   constructor(
     private readonly httpClient: HttpClientAdapter,
     private readonly httpRequest: HttpRequest

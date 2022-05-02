@@ -1,5 +1,5 @@
 import { CreatePostStore } from 'domain/store'
-import { HttpCreatePost } from 'domain/usecases'
+import { HttpCreatePost } from 'domain/http'
 import { PostEntity } from 'domain/entities'
 import { CreatePostData } from 'store'
 

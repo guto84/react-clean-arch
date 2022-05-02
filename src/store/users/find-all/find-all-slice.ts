@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { UserEntity } from 'domain/entities'
-import { GetAllUsersStore } from 'domain/store'
+import { FindAllUsersStore } from 'domain/store'
 
-const initialState: GetAllUsersStore = {
+const initialState: FindAllUsersStore = {
   userList: [],
   userListLoading: true,
   userListErrorMessage: ''
 }
 
-export const getAllUsersSlice = createSlice({
-  name: 'getAllposts',
+export const findAllUsersSlice = createSlice({
+  name: 'findAllposts',
   initialState,
   reducers: {
     setUserList: (state, action: PayloadAction<UserEntity[]>) => {
@@ -25,6 +25,6 @@ export const getAllUsersSlice = createSlice({
 })
 
 export const { setUserList, setUserListLoading, setUserListErrorMessage } =
-  getAllUsersSlice.actions
+  findAllUsersSlice.actions
 
-export default getAllUsersSlice.reducer
+export default findAllUsersSlice.reducer

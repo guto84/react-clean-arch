@@ -1,10 +1,10 @@
-import { HttpCreatePost } from 'domain/usecases'
+import { HttpCreatePost } from 'domain/http'
 import { CreatePostData } from 'store'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 import { useAppDispatch, useAppSelector } from 'infra/hooks'
 import { CreatePostController } from 'application/controllers'
 
-export const CreatePostFactory = () => {
+export const MakeCreatePost = () => {
   const httpRequest: HttpRequest = {
     url: 'https://jsonplaceholder.typicode.com/posts',
     method: 'post',
@@ -20,5 +20,5 @@ export const CreatePostFactory = () => {
   return new CreatePostController(store, createPost)
 }
 
-type CreatePost = typeof CreatePostFactory
+type CreatePost = typeof MakeCreatePost
 export type { CreatePost }

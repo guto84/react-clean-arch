@@ -1,2 +1,2 @@
-export * from './get-all-factory'
-export * from './login-factory'
+export * from './make-find-all'
+export * from './make-login'

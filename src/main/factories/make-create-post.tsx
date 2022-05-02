@@ -1,11 +1,11 @@
-import { CreatePosts } from 'application/pages'
-import { CreatePostFactory, GetAllUsersFactory } from 'application/factories'
+import { CreatePostPage } from 'application/pages'
+import { MakeCreatePost, MakeFindAllUsers } from 'application/factories'
 
-export const MakeCreatePost = () => {
+export const MakeCreatePostPage = () => {
   return (
-    <CreatePosts
-      getAllUsers={GetAllUsersFactory}
-      createPosts={CreatePostFactory}
+    <CreatePostPage
+      findAllUsers={MakeFindAllUsers}
+      createPosts={MakeCreatePost}
     />
   )
 }

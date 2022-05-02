@@ -1,21 +1,21 @@
-import { HttpGetAllUsers } from 'domain/usecases'
+import { HttpFindAllUsers } from 'domain/http'
 import type { UseAppDispatch, UseAppSelector } from 'infra/hooks'
 import {
   setUserList,
   setUserListLoading,
   setUserListErrorMessage
-} from './get-all-slice'
+} from './find-all-slice'
 
-export class GetAllUsersData {
+export class FindAllUsersData {
   constructor(
-    private readonly getAllUsers: HttpGetAllUsers,
+    private readonly findAllUsers: HttpFindAllUsers,
     private readonly useAppDispatch: UseAppDispatch,
     private readonly useAppSelector: UseAppSelector
   ) {}
 
   dispatch = this.useAppDispatch()
 
-  allUsersSelector = this.useAppSelector((state) => state.getAllUsers)
+  allUsersSelector = this.useAppSelector((state) => state.findAllUsers)
 
   handleListErrorMessage = (message: string) =>
     this.dispatch(setUserListErrorMessage(message))
@@ -23,9 +23,9 @@ export class GetAllUsersData {
   handlePostListLoading = (status: boolean) =>
     this.dispatch(setUserListLoading(status))
 
-  handleGetAllUsers = async () => {
+  handleFindAllUsers = async () => {
     try {
-      const response = await this.getAllUsers.handle()
+      const response = await this.findAllUsers.handle()
       this.dispatch(setUserList(response))
       this.dispatch(setUserListLoading(false))
     } catch (error) {

@@ -1,17 +1,21 @@
-import { HttpGetByIdPost } from 'domain/usecases'
+import { HttpFindByIdPost } from 'domain/http'
 import type { UseAppDispatch, UseAppSelector } from 'infra/hooks'
-import { setPost, setPostLoading, setPostErrorMessage } from './get-by-id-slice'
+import {
+  setPost,
+  setPostLoading,
+  setPostErrorMessage
+} from './find-by-id-slice'
 
-export class GetByIdPostData {
+export class FindByIdPostData {
   constructor(
-    private readonly getByIdPost: HttpGetByIdPost,
+    private readonly findByIdPost: HttpFindByIdPost,
     private readonly useAppDispatch: UseAppDispatch,
     private readonly useAppSelector: UseAppSelector
   ) {}
 
   dispatch = this.useAppDispatch()
 
-  getByIdPostSelector = this.useAppSelector((state) => state.getByIdPosts)
+  findByIdPostSelector = this.useAppSelector((state) => state.findByIdPost)
 
   handleListErrorMessage = (message: string) =>
     this.dispatch(setPostErrorMessage(message))
@@ -19,9 +23,9 @@ export class GetByIdPostData {
   handlePostListLoading = (status: boolean) =>
     this.dispatch(setPostLoading(status))
 
-  handleGetByIdPost = async () => {
+  handleFindByIdPost = async () => {
     try {
-      const response = await this.getByIdPost.handle()
+      const response = await this.findByIdPost.handle()
       this.dispatch(setPost(response))
       this.dispatch(setPostLoading(false))
     } catch (error) {

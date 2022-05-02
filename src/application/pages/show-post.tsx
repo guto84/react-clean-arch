@@ -1,29 +1,29 @@
 import React, { useEffect } from 'react'
 import { routerAdapter } from 'application/shared/adapters'
-import { GetByIdPost } from 'application/factories'
+import { FindByIdPost } from 'application/factories'
 
 type Props = {
-  getByIdPost: GetByIdPost
+  findByIdPost: FindByIdPost
 }
 
-export const ShowPost = ({ getByIdPost }: Props) => {
+export const ShowPostPage = ({ findByIdPost }: Props) => {
   const { Link, params } = routerAdapter()
 
-  const { getByIdPostSelector, handleGetByIdPost } = getByIdPost(
+  const { findByIdPostSelector, handleFindByIdPost } = findByIdPost(
     Number(params.id)
   )
 
   useEffect(() => {
-    handleGetByIdPost()
-  }, [handleGetByIdPost])
+    handleFindByIdPost()
+  }, [handleFindByIdPost])
 
   return (
     <>
       <h1>Post</h1>
-      {!getByIdPostSelector.postLoading ? (
+      {!findByIdPostSelector.postLoading ? (
         <ul>
-          <li>{getByIdPostSelector.post.title}</li>
-          <li>{getByIdPostSelector.post.body}</li>
+          <li>{findByIdPostSelector.post.title}</li>
+          <li>{findByIdPostSelector.post.body}</li>
         </ul>
       ) : (
         <p>Carregando...</p>

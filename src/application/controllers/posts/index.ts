@@ -1,3 +1,3 @@
-export * from './get-all-controller'
-export * from './get-by-id-controller'
+export * from './find-all-controller'
+export * from './find-by-id-controller'
 export * from './create-controller'

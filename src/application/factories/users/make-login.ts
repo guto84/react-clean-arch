@@ -11,7 +11,7 @@ export const MakeLogin = () => {
   const httpClientAdapter = new HttpClientAdapter()
   const httpLogin = new HttpLogin(httpClientAdapter, httpRequest)
 
-  return new LoginController(httpLogin)
+  return LoginController({ httpLogin })
 }
 
 type Login = typeof MakeLogin

@@ -1,7 +1,13 @@
 import { Body, HttpLogin } from 'domain/http'
 
-export class LoginController {
-  constructor(private readonly httpLogin: HttpLogin) {}
+type Props = {
+  httpLogin: HttpLogin
+}
 
-  handleLogin = async (body: Body) => await this.httpLogin.handle(body)
+export const LoginController = ({ httpLogin }: Props) => {
+  const handleLogin = async (body: Body) => await httpLogin.handle(body)
+
+  return {
+    handleLogin
+  }
 }

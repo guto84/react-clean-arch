@@ -17,7 +17,7 @@ export const MakeFindAllUsers = () => {
     useAppDispatch,
     useAppSelector
   )
-  return FindAllUserController(store)
+  return FindAllUserController({ store })
 }
 
 type FindAllUsers = typeof MakeFindAllUsers

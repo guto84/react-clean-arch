@@ -3,16 +3,22 @@ import { HttpCreatePost } from 'domain/http'
 import { PostEntity } from 'domain/entities'
 import { CreatePostData } from 'store'
 
-export class CreatePostController {
-  constructor(
-    private readonly store: CreatePostData,
-    private readonly cretePost: HttpCreatePost
-  ) {}
+type Props = {
+  store: CreatePostData
+  httpCreatePost: HttpCreatePost
+}
 
-  createPostSelector: CreatePostStore = this.store.createPostSelector
+export const CreatePostController = ({ store, httpCreatePost }: Props) => {
+  const createPostSelector: CreatePostStore = store.createPostSelector
 
-  setErrorMessage = (message: string) => this.store.setErrorMessage(message)
+  const setErrorMessage = (message: string) => store.setErrorMessage(message)
 
-  createPost = async (body: Omit<PostEntity, 'id'>) =>
-    await this.cretePost.handle(body)
+  const createPost = async (body: Omit<PostEntity, 'id'>) =>
+    await httpCreatePost.handle(body)
+
+  return {
+    createPostSelector,
+    setErrorMessage,
+    createPost
+  }
 }

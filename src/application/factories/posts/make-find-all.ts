@@ -17,7 +17,7 @@ export const MakeFindAllPosts = () => {
     useAppDispatch,
     useAppSelector
   )
-  return FindAllPostController(store)
+  return FindAllPostController({ store })
 }
 
 type FindAllPosts = typeof MakeFindAllPosts

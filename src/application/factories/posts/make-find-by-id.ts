@@ -17,7 +17,7 @@ export const MakeFindByIdPost = (id: number) => {
     useAppDispatch,
     useAppSelector
   )
-  return FindByIdPostController(store)
+  return FindByIdPostController({ store })
 }
 
 type FindByIdPost = typeof MakeFindByIdPost

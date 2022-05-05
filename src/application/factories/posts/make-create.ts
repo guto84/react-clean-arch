@@ -13,11 +13,11 @@ export const MakeCreatePost = () => {
     }
   }
   const httpClientAdapter = new HttpClientAdapter()
-  const createPost = new HttpCreatePost(httpClientAdapter, httpRequest)
+  const httpCreatePost = new HttpCreatePost(httpClientAdapter, httpRequest)
 
   const store = new CreatePostData(useAppDispatch, useAppSelector)
 
-  return new CreatePostController(store, createPost)
+  return CreatePostController({ store, httpCreatePost })
 }
 
 type CreatePost = typeof MakeCreatePost

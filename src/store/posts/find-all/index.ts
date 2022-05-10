@@ -1,4 +1,5 @@
-import { HttpFindAllPosts } from 'domain/http'
+import { PostEntity } from 'domain/entities'
+import { HttpClient } from 'domain/http'
 import type { UseAppDispatch, UseAppSelector } from 'infra/hooks'
 import {
   setPostList,
@@ -8,7 +9,7 @@ import {
 
 export class FindAllPostsData {
   constructor(
-    private readonly findAllPosts: HttpFindAllPosts,
+    private readonly findAllPosts: HttpClient,
     private readonly useAppDispatch: UseAppDispatch,
     private readonly useAppSelector: UseAppSelector
   ) {}
@@ -25,7 +26,7 @@ export class FindAllPostsData {
 
   handleFindAllPosts = async () => {
     try {
-      const response = await this.findAllPosts.handle()
+      const response = await this.findAllPosts.handle<PostEntity[], null>()
       this.dispatch(setPostList(response))
       this.dispatch(setPostListLoading(false))
     } catch (error) {

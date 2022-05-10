@@ -1,4 +1,5 @@
-import { HttpFindByIdPost } from 'domain/http'
+import { PostEntity } from 'domain/entities'
+import { HttpClient } from 'domain/http'
 import type { UseAppDispatch, UseAppSelector } from 'infra/hooks'
 import {
   setPost,
@@ -8,7 +9,7 @@ import {
 
 export class FindByIdPostData {
   constructor(
-    private readonly findByIdPost: HttpFindByIdPost,
+    private readonly findByIdPost: HttpClient,
     private readonly useAppDispatch: UseAppDispatch,
     private readonly useAppSelector: UseAppSelector
   ) {}
@@ -25,7 +26,7 @@ export class FindByIdPostData {
 
   handleFindByIdPost = async () => {
     try {
-      const response = await this.findByIdPost.handle()
+      const response = await this.findByIdPost.handle<PostEntity, null>()
       this.dispatch(setPost(response))
       this.dispatch(setPostLoading(false))
     } catch (error) {

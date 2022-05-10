@@ -1,4 +1,5 @@
-import { HttpFindAllUsers } from 'domain/http'
+import { UserEntity } from 'domain/entities'
+import { HttpClient } from 'domain/http'
 import type { UseAppDispatch, UseAppSelector } from 'infra/hooks'
 import {
   setUserList,
@@ -8,7 +9,7 @@ import {
 
 export class FindAllUsersData {
   constructor(
-    private readonly findAllUsers: HttpFindAllUsers,
+    private readonly findAllUsers: HttpClient,
     private readonly useAppDispatch: UseAppDispatch,
     private readonly useAppSelector: UseAppSelector
   ) {}
@@ -25,7 +26,7 @@ export class FindAllUsersData {
 
   handleFindAllUsers = async () => {
     try {
-      const response = await this.findAllUsers.handle()
+      const response = await this.findAllUsers.handle<UserEntity[], null>()
       this.dispatch(setUserList(response))
       this.dispatch(setUserListLoading(false))
     } catch (error) {

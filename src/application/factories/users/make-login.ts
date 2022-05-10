@@ -1,4 +1,4 @@
-import { HttpLogin } from 'domain/http'
+import { HttpClient } from 'domain/http'
 import { LoginController } from 'application/controllers'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 
@@ -9,7 +9,7 @@ export const MakeLogin = () => {
   }
 
   const httpClientAdapter = new HttpClientAdapter()
-  const httpLogin = new HttpLogin(httpClientAdapter, httpRequest)
+  const httpLogin = new HttpClient(httpClientAdapter, httpRequest)
 
   return LoginController({ httpLogin })
 }

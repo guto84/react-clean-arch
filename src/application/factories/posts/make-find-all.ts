@@ -1,4 +1,4 @@
-import { HttpFindAllPosts } from 'domain/http'
+import { HttpClient } from 'domain/http'
 import { FindAllPostsData } from 'store'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 import { useAppDispatch, useAppSelector } from 'infra/hooks'
@@ -10,7 +10,7 @@ export const MakeFindAllPosts = () => {
     method: 'get'
   }
   const httpClientAdapter = new HttpClientAdapter()
-  const findAllPosts = new HttpFindAllPosts(httpClientAdapter, httpRequest)
+  const findAllPosts = new HttpClient(httpClientAdapter, httpRequest)
 
   const store = new FindAllPostsData(
     findAllPosts,

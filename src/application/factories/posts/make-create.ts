@@ -1,4 +1,4 @@
-import { HttpCreatePost } from 'domain/http'
+import { HttpClient } from 'domain/http'
 import { CreatePostData } from 'store'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 import { useAppDispatch, useAppSelector } from 'infra/hooks'
@@ -13,7 +13,7 @@ export const MakeCreatePost = () => {
     }
   }
   const httpClientAdapter = new HttpClientAdapter()
-  const httpCreatePost = new HttpCreatePost(httpClientAdapter, httpRequest)
+  const httpCreatePost = new HttpClient(httpClientAdapter, httpRequest)
 
   const store = new CreatePostData(useAppDispatch, useAppSelector)
 

@@ -1,4 +1,4 @@
-import { HttpFindByIdPost } from 'domain/http'
+import { HttpClient } from 'domain/http'
 import { FindByIdPostData } from 'store'
 import { HttpClientAdapter, HttpRequest } from 'infra/adapters'
 import { useAppDispatch, useAppSelector } from 'infra/hooks'
@@ -10,7 +10,7 @@ export const MakeFindByIdPost = (id: number) => {
     method: 'get'
   }
   const httpClientAdapter = new HttpClientAdapter()
-  const findByIdPost = new HttpFindByIdPost(httpClientAdapter, httpRequest)
+  const findByIdPost = new HttpClient(httpClientAdapter, httpRequest)
 
   const store = new FindByIdPostData(
     findByIdPost,

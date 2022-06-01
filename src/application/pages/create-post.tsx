@@ -1,20 +1,36 @@
-import React, { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { useFormik } from 'formik'
 import { PostEntity } from 'domain/entities'
-import { CreatePost, FindAllUsers } from 'application/factories'
+import { CreatePostStore, FindAllUsersStore } from 'application/store'
+import { CreatePostData, FindAllUsersData } from 'application/data'
 
 type Props = {
-  findAllUsers: FindAllUsers
-  createPosts: CreatePost
+  createPostStore: CreatePostStore
+  createPostData: CreatePostData
+  findAllUsersStore: FindAllUsersStore
+  findAllUsersData: FindAllUsersData
 }
 
-export const CreatePostPage = ({ findAllUsers, createPosts }: Props) => {
-  const { createPost, createPostSelector, setErrorMessage } = createPosts()
-  const { allUsersSelector, handleFindAllUsers } = findAllUsers()
+export const CreatePostPage = ({
+  createPostStore,
+  createPostData,
+  findAllUsersStore,
+  findAllUsersData
+}: Props) => {
+  const { createPostSelector, setErrorMessage } = createPostStore
+  const { allUsersSelector, handleListErrorMessage, handleUserList } =
+    findAllUsersStore
+
+  const handleUsers = useCallback(async () => {
+    findAllUsersData
+      .handle()
+      .then((response) => handleUserList(response))
+      .catch((error) => handleListErrorMessage(error))
+  }, [])
 
   useEffect(() => {
-    handleFindAllUsers()
-  }, [handleFindAllUsers])
+    handleUsers()
+  }, [handleUsers])
 
   const formik = useFormik({
     initialValues: {
@@ -23,7 +39,8 @@ export const CreatePostPage = ({ findAllUsers, createPosts }: Props) => {
       userId: 0
     },
     onSubmit: (values: Omit<PostEntity, 'id'>) => {
-      createPost(formik.values)
+      createPostData
+        .handle(formik.values)
         .then(() => alert(JSON.stringify(values, null, 2)))
         .catch((error: any) => setErrorMessage(error))
     }

@@ -1,15 +1,35 @@
-import { useEffect } from 'react'
-import { routerAdapter } from 'application/shared/adapters'
-import { FindAllPosts } from 'application/factories'
+import { useCallback, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { PostEntity } from 'domain/entities'
+import { FindAllPostsStore } from 'application/store'
+import { FindAllPostData } from 'application/data'
 
 type Props = {
-  findAllPosts: FindAllPosts
+  findAllPostsStore: FindAllPostsStore
+  findAllPostData: FindAllPostData
 }
 
-export const ListPostsPage = ({ findAllPosts }: Props) => {
-  const { Link } = routerAdapter()
+export const ListPostsPage = ({
+  findAllPostsStore,
+  findAllPostData
+}: Props) => {
+  const {
+    allPostsSelector,
+    handleListErrorMessage,
+    handlePostList,
+    handlePostListLoading
+  } = findAllPostsStore
 
-  const { allPostsSelector, handleFindAllPosts } = findAllPosts()
+  const handleFindAllPosts = useCallback(async () => {
+    handleListErrorMessage('')
+    try {
+      const response = await findAllPostData.handle()
+      handlePostList(response)
+      handlePostListLoading(false)
+    } catch (error: any) {
+      handleListErrorMessage(error)
+    }
+  }, [])
 
   useEffect(() => {
     handleFindAllPosts()
@@ -29,7 +49,7 @@ export const ListPostsPage = ({ findAllPosts }: Props) => {
               </tr>
             </thead>
             <tbody>
-              {allPostsSelector.postList.map((post) => (
+              {allPostsSelector.postList.map((post: PostEntity) => (
                 <tr key={post.id}>
                   <td>{post.title}</td>
                   <td>
